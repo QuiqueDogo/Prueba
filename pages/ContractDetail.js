@@ -46,7 +46,6 @@ const OpenURLButton = ({ url, children }) => {
 
 export default function ContractDetail (props){
     const data = props.route.params.params
-    // console.log(data)
     
     return(
         <ScrollView style={styles.scrollView}>

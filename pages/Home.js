@@ -19,18 +19,17 @@ export default function Home({navigation}) {
     const closeMenu = () => setVisible(false);
 
     const changeInfo= (number) => {
-        setfilterContract([])
-        setVisible(false)
-        setloading(true)
-        setTimeout(() => {
-            setpageSize(number)
-            
-        }, 200);
-        
+        if(number !== pageSize){
+            setVisible(false)
+            setloading(true)
+            setTimeout(() => {
+                setpageSize(number)
+                
+            }, 200);     
+        }
     }
 
     const changePage = (number) =>{
-        setfilterContract([])
         setVisible(false)
         setloading(true)
         setTimeout(() => {
@@ -39,7 +38,6 @@ export default function Home({navigation}) {
         }, 200);
     }
     useEffect(() => {
-        console.log(`https://api.datos.gob.mx/v2/Records?page=${page}&pageSize=${pageSize}`)
       fetch(`https://api.datos.gob.mx/v2/Records?page=${page}&pageSize=${pageSize}`)
         .then((response) => response.json())
         .then(data => { 
